@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+
+import DetailsForm from './Components/DetailsForm.js';
+import RenderCV from './Components/RenderCV.js';
 
 function App() {
+
+  const [personalData, setPersonalData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  });
+
+  const [data,setData] = useState(0);
+
+  function editData() {
+    const name = document.querySelector("input#name");
+    const email = document.querySelector("input#email");
+    const phoneNumber = document.querySelector("input#phoneNumber");
+
+    name.value = personalData.name;
+    email.value = personalData.email;
+    phoneNumber.value = personalData.phoneNumber;
+
+    setData( data+1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>React setup</p>
+      <DetailsForm setPersonalData={setPersonalData} personalData={personalData} data={data} />
+      <RenderCV personalData={personalData} editData={editData} />
     </div>
   );
 }
