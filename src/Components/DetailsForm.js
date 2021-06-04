@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
 
-function DetailsForm ({setPersonalData, personalData, data }) {
+function DetailsForm ({setPersonalData, personalData }) {
     const [name, setName] = useState(' ');
     const [email, setEmail] = useState(' ');
     const [phoneNumber, setPhoneNumber] = useState(' ');
 
-    useEffect(()=>{
+    useEffect(()=>{     
         setName(personalData.name);
         setEmail(personalData.email);
         setPhoneNumber(personalData.phoneNumber);
-    }, [data])
+    }, [personalData])
 
     function handleSubmit(e){
         e.preventDefault();
@@ -23,6 +23,7 @@ function DetailsForm ({setPersonalData, personalData, data }) {
         
         // Reset the inputs after recording Data
         setName(' ');
+        console.log("Use Set");
         setEmail(' ');
         setPhoneNumber(' ');
     }

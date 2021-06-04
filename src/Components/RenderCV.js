@@ -1,4 +1,17 @@
-function RenderCV ({personalData, editData}) {
+function RenderCV ({personalData, setPersonalData}) {
+
+    function editData() {
+    const name = document.querySelector("input#name");
+    const email = document.querySelector("input#email");
+    const phoneNumber = document.querySelector("input#phoneNumber");
+
+    name.value = personalData.name;
+    email.value = personalData.email;
+    phoneNumber.value = personalData.phoneNumber;
+
+    setPersonalData({...personalData});
+  }
+
     return (
         <div>
             <hr />
