@@ -1,27 +1,62 @@
 import {useState} from 'react';
 
-import DetailsForm from './Components/DetailsForm.js';
-import RenderCV from './Components/RenderCV.js';
+import Navbar from './Components/Navbar.js';
 
 function App() {
 
-  const [personalData, setPersonalData] = useState({
-    name: '',
-    email: '',
-    phoneNumber: '',
-  });
+  const [seeContact, setSeeContact] = useState(false);
+  const [seeWork, setSeeWork] = useState(false);
+  const [seeEducation, setSeeEducation] = useState(false);
+  const [seeCompetencies, setSeeCompetencies] = useState(false);
+  const [seeInterests, setSeeInterests] = useState(false);
+
+  function toggleVisibility(section) {
+    switch (section) {
+      case 'contact':
+        setSeeContact((prev) => !prev); // Toggle from Visible to NotVisible.
+        //setSeeContact(!seeContact);
+        break;
+      case 'work':
+        setSeeWork((prev) => !prev);
+        break;
+      case 'education':
+        setSeeEducation((prev) => !prev);
+        break;
+      case 'competencies':
+        setSeeCompetencies((prev) => !prev);
+        break;
+      case 'interests':
+        setSeeInterests((prev) => !prev);
+        break;
+      default:
+        console.log("The gods must be crazy");
+    }
+  }
 
   return (
     <div className="App">
-      <p>React setup</p>
-      <DetailsForm 
-        setPersonalData={setPersonalData} 
-        personalData={personalData} 
-      />
-      <RenderCV 
-        personalData={personalData} 
-        setPersonalData={setPersonalData} 
-        />
+      <Navbar toggleVisibility={toggleVisibility} />
+      <hr/>
+      <h2 className="sectionHeading">CV Editing Pad</h2>
+      {seeContact && <p>Contact Details</p> }
+
+      {seeWork && <p>Work Experience</p> }
+
+      {seeEducation && <p>Education History</p> }
+
+      {seeCompetencies && <p>Competencies</p> }
+      {seeInterests && <p>Other Interests</p> }
+      <hr/>
+
+      <section className="displayCV">
+      <h2 className="sectionHeading">CV Render</h2>
+        {!seeContact && <p>Contact CV Part</p>}
+        {!seeWork && <p>Work CV Part</p> }
+        {!seeEducation && <p>Education CV Part</p> }
+        {!seeCompetencies && <p>Competencies CV Part</p> }
+        {!seeInterests && <p>Interests CV Part</p> }
+      </section>
+
     </div>
   );
 }
