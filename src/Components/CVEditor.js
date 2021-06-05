@@ -5,15 +5,14 @@ import EditCompetencies from './CVEditor/EditCompetencies.js';
 import EditInterests from './CVEditor/EditInterests.js';
 
 
-function CVEditor({ data }) {
-  console.log(data);
+function CVEditor({ seeContact, seeWork, seeEducation, seeCompetencies, seeInterests }) {
   return (
     <div className="cvEditor">
-      {data && <EditContact /> }
-      {/* seeWork && <EditWork /> }
+      {seeContact && <EditContact /> }
+      {seeWork && <EditWork /> }
       {seeEducation && <EditEducation /> }
       {seeCompetencies && <EditCompetencies /> }
-      {seeInterests && <EditInterests /> */}
+      {seeInterests && <EditInterests /> }
     </div>
   )
 };
