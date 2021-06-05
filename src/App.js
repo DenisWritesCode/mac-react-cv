@@ -2,6 +2,7 @@ import {useState} from 'react';
 
 import Navbar from './Components/Navbar.js';
 import CVEditor from './Components/CVEditor.js';
+import CVRender from './Components/CVRender.js';
 
 function App() {
 
@@ -44,30 +45,15 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar toggleVisibility={toggleVisibility} />
+      <Navbar toggleVisibility={toggleVisibility} {...data} />
       <hr/>
       <h2 className="sectionHeading">CV Editing Pad</h2>
       <CVEditor {...data} />
-      {/*
-
-      {seeContact && <p>Contact Details</p> }
-
-      {seeWork && <p>Work Experience</p> }
-
-      {seeEducation && <p>Education History</p> }
-
-      {seeCompetencies && <p>Competencies</p> }
-      {seeInterests && <p>Other Interests</p> }
-      */}
       <hr/>
 
       <section className="displayCV">
-      <h2 className="sectionHeading">CV Render</h2>
-        {!seeContact && <p>Contact CV Part</p>}
-        {!seeWork && <p>Work CV Part</p> }
-        {!seeEducation && <p>Education CV Part</p> }
-        {!seeCompetencies && <p>Competencies CV Part</p> }
-        {!seeInterests && <p>Interests CV Part</p> }
+        <h2 className="sectionHeading">CV Render</h2>
+        <CVRender {...data} />
       </section>
 
     </div>
