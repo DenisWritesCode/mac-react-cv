@@ -2,14 +2,23 @@ import {useState} from 'react';
 
 import Navbar from './Components/Navbar.js';
 import CVEditor from './Components/CVEditor.js';
+import CVRender from './Components/CVRender.js';
 
 function App() {
 
+  // Controls what components to show
   const [seeContact, setSeeContact] = useState(false);
   const [seeWork, setSeeWork] = useState(false);
   const [seeEducation, setSeeEducation] = useState(false);
   const [seeCompetencies, setSeeCompetencies] = useState(false);
   const [seeInterests, setSeeInterests] = useState(false);
+
+  // Data
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  });
 
   function toggleVisibility(section) {
     switch (section) {
@@ -34,7 +43,7 @@ function App() {
     }
   }
 
-  const data = {
+  const viewData = {
     seeContact,
     seeWork,
     seeEducation,
@@ -42,32 +51,21 @@ function App() {
     seeInterests
   };
 
+  const userData = {
+    contact
+  }
+
   return (
     <div className="App">
-      <Navbar toggleVisibility={toggleVisibility} />
+      <Navbar toggleVisibility={toggleVisibility} {...viewData} />
       <hr/>
       <h2 className="sectionHeading">CV Editing Pad</h2>
-      <CVEditor {...data} />
-      {/*
-
-      {seeContact && <p>Contact Details</p> }
-
-      {seeWork && <p>Work Experience</p> }
-
-      {seeEducation && <p>Education History</p> }
-
-      {seeCompetencies && <p>Competencies</p> }
-      {seeInterests && <p>Other Interests</p> }
-      */}
+      <CVEditor {...viewData} setContact={setContact} toggleVisibility={toggleVisibility} />
       <hr/>
 
       <section className="displayCV">
-      <h2 className="sectionHeading">CV Render</h2>
-        {!seeContact && <p>Contact CV Part</p>}
-        {!seeWork && <p>Work CV Part</p> }
-        {!seeEducation && <p>Education CV Part</p> }
-        {!seeCompetencies && <p>Competencies CV Part</p> }
-        {!seeInterests && <p>Interests CV Part</p> }
+        <h2 className="sectionHeading">CV Render</h2>
+        <CVRender {...viewData} {...userData} />
       </section>
 
     </div>

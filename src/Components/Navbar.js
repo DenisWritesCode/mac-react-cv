@@ -1,4 +1,4 @@
-function Navbar({toggleVisibility}){
+function Navbar({toggleVisibility, seeContact, seeWork, seeEducation, seeCompetencies, seeInterests }){
   function handleClick(eventID) {
     toggleVisibility(eventID);
   }
@@ -9,31 +9,31 @@ function Navbar({toggleVisibility}){
               <li>
                 <button id="contact"
                   onClick={(e)=>{handleClick(e.target.id)}} >
-                  Contact Details
+                  {seeContact ? "D.E. Contact" : "Edit contact" }
                 </button>
               </li>
               <li>
                 <button id="work"
                   onClick={(e)=>{handleClick(e.target.id)}} >
-                  Work Experience
+{seeWork ? "D.E. Work" : "Edit Work" }
                 </button>
               </li>
               <li>
                 <button id="education"
                   onClick={(e)=>{handleClick(e.target.id)}} >
-                  Education Experience
+{seeEducation ? "D.E. education" : "Edit education" }
               </button>
               </li>
               <li>
                 <button id="competencies"
                   onClick={(e)=>{handleClick(e.target.id)}} >
-                  Competencies
+{seeCompetencies ? "D.E. competencies" : "Edit competencies" }
                 </button>
               </li>
               <li>
                 <button id="interests"
                   onClick={(e)=>{handleClick(e.target.id)}} >
-                  Other Interests
+{/* D.E. -> Done Editing */ seeInterests ? "D.E. interests" : "Edit interests" }
                 </button>
               </li>
             </ul>
