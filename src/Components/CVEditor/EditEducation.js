@@ -1,7 +1,9 @@
 function EditEducation() {
-  return(
-    <p>Edit Education form</p>
-  )
-};
+  return (
+    <form action="#">
+      
+    </form>
+  );
+}
 
 export default EditEducation;
