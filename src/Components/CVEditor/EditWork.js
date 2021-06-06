@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import CreateWorkForm from './CreateWorkForm';
+import CreateWorkForm from './Creater/CreateWorkForm';
 
 function EditWork({setWork, toggleVisibility}) {
 
@@ -10,6 +10,7 @@ function EditWork({setWork, toggleVisibility}) {
     e.preventDefault();
   };
 
+  // Adds count to array
   function handleAddEducation(){
    
     const lastElement = hashCount.length - 1;
@@ -19,22 +20,18 @@ function EditWork({setWork, toggleVisibility}) {
     setHashCount([...hashCount, newElement]);
   };
 
-  function handleCurrent(element) {
-    const endDate = document.querySelector("#stopDateLabel"); // Select stop date
-
-    if(element.checked){
-      endDate.classList.add("hidden");
-    }
-    else {
-      endDate.classList.remove("hidden");
-    }
+  function handleDelete(hash) {
+    // filter creates a new array with all enements that pass the test implemented by the provided function.
+    setHashCount((hashArray) => hashArray.filter((element) => hash != element)); // Delete the selected element.
+    console.log(hashCount);
   }
+  
 
   return (
     <div className="">
       {hashCount.map((hash) => {
         return(
-          <CreateWorkForm hash={hash} />
+          <CreateWorkForm key={hash} hash={hash} handleDelete={handleDelete} />
         )
       })}
       <button onClick={handleAddEducation}>Add Education</button>
