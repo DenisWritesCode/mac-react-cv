@@ -3,18 +3,14 @@ import { useState } from "react";
 import CreateWorkForm from "./Creater/CreateWorkForm";
 
 function EditWork({ setWork, toggleVisibility }) {
-  const [hashCount, setHashCount] = useState([0]);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
+  const [hashCount, setHashCount] = useState([0]); //Should be an object
 
   // Adds count to array
   function handleAddEducation() {
 
     if(hashCount.length === 0) {
       // If hashCount is empty, append 0.
-      setHashCount([0]);
+      setHashCount([0]); // An object
     } else {
       const lastElement = hashCount.length - 1;
       const lastHash = hashCount[lastElement];
@@ -24,7 +20,7 @@ function EditWork({ setWork, toggleVisibility }) {
 
   function handleDelete(hash) {
     // filter creates a new array with all enements that pass the test implemented by the provided function.
-    setHashCount((hashArray) => hashArray.filter((element) => hash != element)); // Delete the selected element.
+    setHashCount((hashArray) => hashArray.filter((element) => hash !== element)); // Delete the selected element.
     if (hashCount.length < 1) {
       hashCount.push(0);
       console.log("Pushed: ",hashCount);
