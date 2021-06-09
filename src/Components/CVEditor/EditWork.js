@@ -3,61 +3,66 @@ import { useState } from "react";
 import CreateWorkForm from "./Creater/CreateWorkForm";
 
 function EditWork({ setWork, toggleVisibility }) {
-  // const freshState = {
-  //   index: 0,
-  //   title: "",
-  //   organisation: "",
-  //   startDate: "",
-  //   workHere: "",
-  //   stopDate: "",
-  //   jobDescription: "",
-  // };
-  const [hashCount, setHashCount] = useState([]); // Fresh start
+
+  const [workData, setWorkData] = useState([]); // Fresh start
+  const [finalData, setFinalData] = useState([])
 
   function makeWork(hash) {
     return {
       index: hash,
-      title: "",
-      organisation: "",
-      startDate: "",
-      workHere: "",
-      stopDate: "",
-      jobDescription: "",
+      jobTitle: " ",
+      organisation: " ",
+      startDate: "2021-01",
+      workHere: false,
+      stopDate: "2021-01",
+      jobDescription: " ",
     };
   }
-  // Adds count to array
-  function handleAddEducation() {
-    if (hashCount.length === 0) {
-      // If hashCount is empty, append freshState.
+
+  // Adds new work object to array
+  function handleAddWork() {
+    if (workData.length === 0) {
+      // If workData is empty, append freshState.
       const freshState = makeWork(0);
-      setHashCount([{ ...freshState }]);
+      setWorkData([{ ...freshState }]);
     } else {
-      const lastElement = hashCount.length - 1; // Select our last object
-      const lastHash = hashCount[lastElement].index; // Get the index of selected object
+      const lastElement = workData.length - 1; // Select our last object
+      const lastHash = workData[lastElement].index; // Get the index of selected object
       const newWorkData = makeWork(lastHash + 1); // Make new object with incremented index
-      setHashCount([...hashCount, newWorkData]); // Change state by appending new work Data
+      setWorkData([...workData, newWorkData]); // Change state by appending new work Data
     }
   }
 
   function handleDelete(hash) {
     // filter creates a new array with all enements that pass the test implemented by the provided function.
-    setHashCount((hashArray) =>
+    setWorkData((hashArray) =>
       hashArray.filter((element) => hash !== element.index)
     ); // Delete the selected element.
   }
 
+  function handleDoneEditing() {
+    setWork(finalData);
+    
+  }
+
+  function appendData(data) {
+    setFinalData([...finalData, data]); // Take what was already there and add the new data
+  }
+
   return (
     <div className="">
-      {hashCount.map((hash) => {
+      {workData.map((hash) => {
         return (
           <CreateWorkForm
             key={hash.index}
             data={hash}
             handleDelete={handleDelete}
+            appendData={appendData}
           />
         );
       })}
-      <button onClick={handleAddEducation}>Add Education</button>
+      <button onClick={handleAddWork}>Add Work</button>
+      <button onClick={handleDoneEditing}>Done Editing</button>
     </div>
   );
 }
