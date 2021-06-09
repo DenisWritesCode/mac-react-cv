@@ -13,12 +13,14 @@ function App() {
   const [seeCompetencies, setSeeCompetencies] = useState(false);
   const [seeInterests, setSeeInterests] = useState(false);
 
-  // Data
+  // Contact Data
   const [contact, setContact] = useState({
     name: '',
     email: '',
     phoneNumber: '',
   });
+
+  const [work, setWork] = useState([])
 
   function toggleVisibility(section) {
     switch (section) {
@@ -43,6 +45,7 @@ function App() {
     }
   }
 
+  // Variables for handling viewing the Data
   const viewData = {
     seeContact,
     seeWork,
@@ -51,8 +54,16 @@ function App() {
     seeInterests
   };
 
+  // Method for working with the State.
+  const setMethods = {
+    setContact,
+    setWork
+  };
+
+
   const userData = {
-    contact
+    contact,
+    work
   }
 
   return (
@@ -60,7 +71,7 @@ function App() {
       <Navbar toggleVisibility={toggleVisibility} {...viewData} />
       <hr/>
       <h2 className="sectionHeading">CV Editing Pad</h2>
-      <CVEditor {...viewData} setContact={setContact} toggleVisibility={toggleVisibility} />
+      <CVEditor {...viewData} setContact={setContact} setWork={setWork} toggleVisibility={toggleVisibility} />
       <hr/>
 
       <section className="displayCV">
