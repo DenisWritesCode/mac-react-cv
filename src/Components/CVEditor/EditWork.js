@@ -5,7 +5,7 @@ import CreateWorkForm from "./Creater/CreateWorkForm";
 function EditWork({ setWork, toggleVisibility }) {
 
   const [workData, setWorkData] = useState([]); // Fresh start
-  const [finalData, setFinalData] = useState([])
+  const [finalData, setFinalData] = useState([]) // Will be send to state
 
   function makeWork(hash) {
     return {
