@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function EditContact({ setContact, toggleVisibility }) {
+function EditContact({ contact, setContact, toggleVisibility }) {
   //Form fields
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState(contact.name);
+  const [email, setEmail] = useState(contact.email);
+  const [phoneNumber, setPhoneNumber] = useState(contact.phoneNumber);
 
   function handleSubmit(e) {
     e.preventDefault();

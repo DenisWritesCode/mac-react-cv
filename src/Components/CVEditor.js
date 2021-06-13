@@ -5,10 +5,10 @@ import EditCompetencies from './CVEditor/EditCompetencies.js';
 import EditInterests from './CVEditor/EditInterests.js';
 
 
-function CVEditor({ seeContact, seeWork, seeEducation, seeCompetencies, seeInterests, setContact, setWork, toggleVisibility}) {
+function CVEditor({ seeContact, seeWork, seeEducation, seeCompetencies, seeInterests, contact, setContact, setWork, toggleVisibility}) {
   return (
     <div className="cvEditor">
-      {seeContact && <EditContact setContact={setContact} toggleVisibility={toggleVisibility} /> }
+      {seeContact && <EditContact contact={contact} setContact={setContact} toggleVisibility={toggleVisibility} /> }
       {seeWork && <EditWork setWork={setWork} toggleVisibility={toggleVisibility} /> }
       {seeEducation && <EditEducation /> }
       {seeCompetencies && <EditCompetencies /> }
