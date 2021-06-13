@@ -71,7 +71,7 @@ function App() {
       <Navbar toggleVisibility={toggleVisibility} {...viewData} />
       <hr/>
       <h2 className="sectionHeading">CV Editing Pad</h2>
-      <CVEditor {...viewData} setContact={setContact} setWork={setWork} toggleVisibility={toggleVisibility} />
+      <CVEditor {...viewData} {...userData} setContact={setContact} setWork={setWork} toggleVisibility={toggleVisibility} />
       <hr/>
 
       <section className="displayCV">
