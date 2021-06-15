@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import CreateWorkForm from "./Creater/CreateWorkForm";
 
-function EditWork({ setWork, toggleVisibility }) {
+function EditWork({ setWork, work, toggleVisibility }) {
 
   const [workData, setWorkData] = useState([]); // Fresh start
   const [finalData, setFinalData] = useState([]) // Will be send to state
