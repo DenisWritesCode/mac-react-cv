@@ -3,8 +3,11 @@ import { useState } from "react";
 import CreateWorkForm from "./Creater/CreateWorkForm";
 
 function EditWork({ setWork, work, toggleVisibility }) {
+  console.log(work);
 
-  const [workData, setWorkData] = useState([]); // What is looked out at when rendered
+  // Array of objects. objects 
+
+  const [workData, setWorkData] = useState(work); // What is looked out at when rendered
   const [finalData, setFinalData] = useState([]) // Will be send to state
 
   function makeWork(hash) {
@@ -45,6 +48,8 @@ function EditWork({ setWork, work, toggleVisibility }) {
     
   }
 
+  // Use hash(index) to splice data in.
+  // Replace the old version with the new one.
   function appendData(data) {
     setFinalData([...finalData, data]); // Take what was already there and add the new data
   }
