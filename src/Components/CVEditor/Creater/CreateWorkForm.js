@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function CreateWorkForm({ data, handleDelete, appendData }) {
   const hash = data.index; // Makes every form unique
 
-  const [jobTitle, setJobTitle] = useState(" ");
+  const [jobTitle, setJobTitle] = useState(data.jobTitle);
   const [organisation, setOrganisation] = useState(" ");
   const [startDate, setStartDate] = useState("2021-01");
   const [stopDate, setStopDate] = useState("2021-01");
@@ -37,14 +37,7 @@ export default function CreateWorkForm({ data, handleDelete, appendData }) {
         console.log("Something weird changed");
         break;
     }
-  }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const form = document.querySelector(`#form${hash}`);
-
-    // Fill in this form's data.
     data = {
       index: hash,
       jobTitle: jobTitle,
@@ -56,7 +49,17 @@ export default function CreateWorkForm({ data, handleDelete, appendData }) {
     };
 
     appendData(data);
-    form.classList.add("hidden"); // Take that form from the DOM.
+
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = document.querySelector(`#form${hash}`);
+
+    // Fill in this form's data.
+    
+    //form.classList.add("hidden"); // Take that form from the DOM.
   }
 
   // When delete btn is pressed
