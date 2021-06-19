@@ -50,6 +50,7 @@ function EditWork({ setWork, work, toggleVisibility }) {
 
   // Use hash(index) to splice data in.
   // Replace the old version of our data with the new one. It's an array.
+  // Going home.
   function appendData(data) {
     setFinalData([...finalData, data]); // Take what was already there and add the new data
   }
